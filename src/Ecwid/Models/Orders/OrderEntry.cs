@@ -1,8 +1,8 @@
 ﻿// Licensed under the MIT License. See LICENSE in the git repository root for license information.
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace Ecwid.Models
 {
@@ -53,6 +53,20 @@ namespace Ecwid.Models
         /// </value>
         [JsonProperty("externalTransactionId")]
         public string ExternalTransactionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refunded amount.
+        /// </summary>
+        /// <value>
+        /// The refunded amount
+        /// </value>
+        [JsonProperty("refundedAmount")]
+        public double RefundedAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refunds.
+        /// </summary>
+        public IEnumerable<RefundsInfo> Refunds { get; set; }
 
         /// <summary>
         /// Gets or sets the payment method.
@@ -136,11 +150,11 @@ namespace Ecwid.Models
         public string PaymentMessage { get; set; }
 
         /// <summary>
-        /// Gets or sets the fulfilment status. Supported values: AWAITING_PROCESSING, PROCESSING, SHIPPED, DELIVERED,
+        /// Gets or sets the fulfilment status. Supported values: AWAITING_PROCESSING, PROCESSING, SHIPPED, DELIVERED, READY_FOR_PICKUP,
         /// WILL_NOT_DELIVER, RETURNED.
         /// </summary>
         /// <value>
-        /// The fulfillment status. Supported values: AWAITING_PROCESSING, PROCESSING, SHIPPED, DELIVERED, WILL_NOT_DELIVER,
+        /// The fulfillment status. Supported values: AWAITING_PROCESSING, PROCESSING, SHIPPED, DELIVERED, WILL_NOT_DELIVER, READY_FOR_PICKUP,
         /// RETURNED.
         /// </value>
         [JsonProperty("fulfillmentStatus")]
