@@ -1,10 +1,10 @@
-// Licensed under the GPL License, Version 3.0. See LICENSE in the git repository root for license information.
+﻿// Licensed under the GPL License, Version 3.0. See LICENSE in the git repository root for license information.
 
+using Ecwid.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Ecwid.Models;
 
 namespace Ecwid
 {
@@ -199,6 +199,15 @@ namespace Ecwid
         /// <exception cref="EcwidHttpException">Something happened to the HTTP call.</exception>
         /// <exception cref="EcwidConfigException">Credentials are invalid.</exception>
         Task<UpdateStatus> UpdateOrderAsync(OrderEntry order);
+
+        /// <summary>
+        /// Marks the given order as shipped asynchronously.
+        /// </summary>
+        /// <param name="orderId">The order Id.</param>
+        /// <exception cref="ArgumentException">Order number is 0.</exception>
+        /// <exception cref="EcwidHttpException">Something happened to the HTTP call.</exception>
+        /// <exception cref="EcwidConfigException">Credentials are invalid.</exception>
+        Task<UpdateStatus> MarkOrderAsShippedAsync(int orderId);
 
         /// <summary>
         /// Delete one order asynchronously.
