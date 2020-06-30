@@ -154,12 +154,22 @@ namespace Ecwid
         }
 
         /// <inheritdoc />
+        public Task<UpdateStatus> MarkOrderAsProcessingAsync(int orderId, CancellationToken cancellationToken)
+        {
+            return PutApiAsync<UpdateStatus>(GetUrl($"orders/{orderId}"), new { orderNumber = orderId, fulfillmentStatus = "PROCESSING" }, cancellationToken);
+        }
+
+        /// <inheritdoc />
         public Task<UpdateStatus> UpdateOrderAsync(OrderEntry order)
             => UpdateOrderAsync(order, CancellationToken.None);
 
         /// <inheritdoc />
         public Task<UpdateStatus> MarkOrderAsShippedAsync(int orderId)
             => MarkOrderAsShippedAsync(orderId, CancellationToken.None);
+
+        /// <inheritdoc />
+        public Task<UpdateStatus> MarkOrderAsProcessingAsync(int orderId)
+            => MarkOrderAsProcessingAsync(orderId, CancellationToken.None);
 
         /// <inheritdoc />
         public Task<DeleteStatus> DeleteOrderAsync(OrderEntry order, CancellationToken cancellationToken)

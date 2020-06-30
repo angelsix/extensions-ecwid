@@ -210,6 +210,15 @@ namespace Ecwid
         Task<UpdateStatus> MarkOrderAsShippedAsync(int orderId);
 
         /// <summary>
+        /// Marks the given order as processing asynchronously.
+        /// </summary>
+        /// <param name="orderId">The order Id.</param>
+        /// <exception cref="ArgumentException">Order number is 0.</exception>
+        /// <exception cref="EcwidHttpException">Something happened to the HTTP call.</exception>
+        /// <exception cref="EcwidConfigException">Credentials are invalid.</exception>
+        Task<UpdateStatus> MarkOrderAsProcessingAsync(int orderId);
+
+        /// <summary>
         /// Delete one order asynchronously.
         /// </summary>
         /// <param name="order">The order to delete.</param>
